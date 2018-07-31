@@ -21,6 +21,7 @@ class LeagueVC: UIViewController {
     }
     
     
+    
     @IBAction func onLeagueTapped (sender : UIButton){
         player.desiredLeague = sender.titleLabel!.text
         nextBtn.isEnabled = true
@@ -29,6 +30,12 @@ class LeagueVC: UIViewController {
    
     @IBAction func onNextTapped(_ sender: Any) {
         performSegue(withIdentifier: "segueSkillVC", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let skillVC = segue.destination as? SkillVC {
+            skillVC.player = player
+        }
     }
     
 }
